@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long cycle_length(long n) {
-    long length = 1;
+int cycle_length(int n) {
+    int length = 1;
     while (n != 1) {
-        if (n % 2) { // is n odd?
+        if (n % 2) {
             n = 3 * n + 1;
         } else {
             n = n / 2;
@@ -16,17 +16,24 @@ long cycle_length(long n) {
 
 int main(int argc, char** argv) {
     for (;;) {
-        long a, b, maximum = 1;
-        if (scanf("%ld %ld", &a, &b) != 2) {
+        int i, t, a, b, maximum = 1;
+        if (scanf("%d %d", &a, &b) != 2) {
             break;
         }
-        for (int i = a; i <= b; i++) {
-            long length = cycle_length(i);
+        if (a > b) {
+            i = b;
+            t = a;
+        } else {
+            i = a;
+            t = b;
+        }
+        for (; i <= t; i++) {
+            int length = cycle_length(i);
             if (length > maximum) {
                 maximum = length;
             }
         }
-        printf("%ld %ld %ld\n", a, b, maximum);
+        printf("%d %d %d\n", a, b, maximum);
     }
     return 0;
 }

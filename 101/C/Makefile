@@ -1,8 +1,8 @@
 run: problem
-	@cat sample_input.txt | ./problem
+	@cat sample-input.txt | ./problem
 
 problem: problem.c
-	gcc -Wall problem.c -o problem -O3
+	gcc -Wall problem.c -o problem
 
 clean:
 	rm -rf problem
